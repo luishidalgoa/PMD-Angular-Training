@@ -1,1 +1,3 @@
-<p>notes works!</p>
+<app-note *ngFor="let note of this.notesS.getNotes();let
+i=index;trackBy:trackByNotes" [note]="note" (editNote)="editingNote(note)" (removeNote)="removingNote(note)"
+    appHighlight></app-note>

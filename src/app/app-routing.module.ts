@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: "about", loadComponent:
       () => import('./pages/about/about.component').then(c => c.AboutComponent)
-  },
+  },  
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'login', component: LoginComponent,
