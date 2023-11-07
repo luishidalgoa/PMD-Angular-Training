@@ -1,33 +1,38 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input,Output } from '@angular/core';
-import { INote } from 'src/app/Model/inote';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { INote } from '../../model/INote';
 
 @Component({
   selector: 'app-note',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.scss']
 })
-export class NoteComponent {
-  @Input('note') public note: INote = {
-    id: -1,
-    title: '',
-    description: ''
-  }
-  deleteStyle: string = 'border-red-500 text-red rounded-md';
-  editStyle: string = 'bg-blue-500 text-white rounded-md';
+export class NoteComponent implements OnInit {
+   @Input('note') public note:INote = {
+    id:-1,
+    title:'',
+    description:''
+  };
 
-  @Output() borrar = new EventEmitter<INote>();
-  @Output() editar = new EventEmitter<INote>();
+  @Output() editNote = new EventEmitter<INote>();
+  @Output() removeNote = new EventEmitter<INote>();
 
-  constructor() { }
+  constructor() {
+   }
 
-  public removeNote(): void {
-    this.borrar.emit(this.note);
+  ngOnInit(): void {
+    console.log("NGONINIT")
   }
-  public editNote(): void {
-    this.note.title = prompt('Escribe el nuevo título') || '';
-    this.editar.emit(this.note);
+  ngAfterContentInit(){
+    console.log("NGAFTERCONTENTINIT");
   }
+
+  public editNoteFn(){
+    if(this.note.id==-1) return;
+    this.editNote.emit(this.note);
+  }
+  public removeNoteFn(){
+    if(this.note.id==-1) return;
+    this.removeNote.emit(this.note);
+  }
+
 }
