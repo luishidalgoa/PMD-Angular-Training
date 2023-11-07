@@ -6,10 +6,12 @@ describe('NotesComponent', () => {
   let component: NotesComponent;
   let fixture: ComponentFixture<NotesComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [NotesComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ NotesComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(NotesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

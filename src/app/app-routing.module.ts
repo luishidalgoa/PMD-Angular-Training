@@ -7,7 +7,6 @@ import { NewComponent } from './pages/new/new.component';
 import { loginGuard } from './guards/login.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { Error404Component } from './pages/error404/error404.component';
-import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -19,7 +18,8 @@ const routes: Routes = [
     canActivate: [loginGuard]
   },
   {
-    path: "about", component: AboutComponent
+    path: "about", loadComponent:
+      () => import('./pages/about/about.component').then(c => c.AboutComponent)
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
