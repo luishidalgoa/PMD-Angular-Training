@@ -1,12 +1,14 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-group">
-      <label>Título</label>
-      <input #title type="text" class="form-control" formControlName="title" placeholder="Título">
-    </div>
-    <div class="form-group">
-      <label>Descripción</label>
-      <input type="text" class="form-control" formControlName="description" placeholder="Descripción">
-    </div>
-    <input type="hidden" formControlName="id">
-    <button type="submit" class="btn btn-primary" [disabled]="this.form.status!='VALID'">Guardar</button>
+<form [formGroup]="form" (ngSubmit)="submit()" class="relative ">
+    <section class="">
+      <div class="flex flex-col">
+        <label class="text-xl">Título</label>
+        <input #title type="text" class="form-control" formControlName="title" placeholder="Título">
+      </div>
+      <div class="flex flex-col">
+        <label class="text-xl">Descripción</label>
+        <input type="text" class="form-control" formControlName="description" placeholder="Descripción">
+      </div>
+      <input type="hidden" formControlName="id">
+      <button type="submit" class="border border-amber-200 bg-cyan-100 shadow shadow-sm shadow-amber-200/20 p-1 rounded-md cursor-pointer active:transform active:translate-y-0.5 active:transition-transform" [disabled]="this.form.status!='VALID'">Guardar</button>
+    </section>
 </form>
