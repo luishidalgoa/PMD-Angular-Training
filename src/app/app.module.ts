@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { NotesService } from './services/notes.service';
 import {GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-s
     BrowserModule,
     AppRoutingModule,
     ButtonComponent,
-    NavbarComponent
+    NavbarComponent,
+    HttpClientModule
   ],
   providers: [NotesService,{
     provide: 'SocialAuthServiceConfig',
