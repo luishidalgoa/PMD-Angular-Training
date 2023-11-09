@@ -8,8 +8,11 @@ import { ButtonComponent } from './components/button/button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { NotesService } from './services/notes.service';
-import {GoogleLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
-import {HttpClientModule} from "@angular/common/http";
+import { GoogleLoginProvider, SocialAuthServiceConfig } from "@abacritt/angularx-social-login";
+import { HttpClientModule } from "@angular/common/http";
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,14 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     ButtonComponent,
     NavbarComponent,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // for firestore
   ],
-  providers: [NotesService,{
+  providers: [NotesService, {
     provide: 'SocialAuthServiceConfig',
     useValue: {
-      autoLogin: false,
+      autoLogin: true,
       providers: [
         {
           id: GoogleLoginProvider.PROVIDER_ID,

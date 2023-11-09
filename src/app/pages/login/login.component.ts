@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
 
@@ -10,6 +10,8 @@ import {GoogleSigninButtonModule} from "@abacritt/angularx-social-login";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Input()
+  public url!:string;
 
   constructor() { }
 

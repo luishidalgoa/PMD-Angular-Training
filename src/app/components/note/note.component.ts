@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { INote } from '../../model/INote';
+import { INote } from 'src/app/model/INote';
 
 @Component({
   selector: 'app-note',

@@ -1,38 +1,39 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { INote } from '../../model/INote';
+import { INote } from 'src/app/model/INote';
+
 
 @Component({
   selector: 'app-form-note',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-note.component.html',
   styleUrls: ['./form-note.component.css']
 })
 export class FormNoteComponent implements OnInit {
 
-  @Input() note!:INote;
+  @Input() note!: INote;
   @Output() onsubmit = new EventEmitter<INote>();
-  public form:FormGroup;
+  public form: FormGroup;
   /*@ViewChild('title') title!:ElementRef;
   public description!:string;*/
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      title: ['',[Validators.required,Validators.minLength(4)]],
-      description:[''],
-      id:['']
+      title: ['', [Validators.required, Validators.minLength(4)]],
+      description: [''],
+      id: ['']
     })
-   }
-  ngOnChanges($changes:any){
+  }
+  ngOnChanges($changes: any) {
     console.log($changes)
-    if($changes.note && $changes.note.currentValue){
+    if ($changes.note && $changes.note.currentValue) {
       this.form.setValue($changes.note.currentValue);
     }
   }
   ngOnInit(): void {
-    if(this.note && this.note.title){
+    if (this.note && this.note.title) {
       console.log("RECIBO")
       console.log(this.note)
       this.form.setValue(this.note);
@@ -43,10 +44,9 @@ export class FormNoteComponent implements OnInit {
     }
   }
 
-  submit(){
-    //VALID
-    let newNote:INote = {
-      id:this.form.value.id,// <<-- new
+  submit() {
+    let newNote: INote = {
+      id: this.form.value.id,
       title: this.form.value.title,
       description: this.form.value.description
     }

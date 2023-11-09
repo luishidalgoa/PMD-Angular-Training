@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { INote } from './model/INote';
 
 @Component({
   selector: 'app-root',

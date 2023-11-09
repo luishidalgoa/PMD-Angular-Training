@@ -3,5 +3,19 @@
         <li><a routerLinkActive="active" routerLink="/home" class="text-xl font-semibold">Inicio</a></li>
         <li><a routerLink="/new" routerLinkActive="active">Nueva nota</a></li>
         <li><a routerLink="/about" routerLinkActive="active">Acerca de</a></li>
+        <li class="dropdown" *ngIf="this.loginS.user">
+            <a class="" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Cuenta
+            </a>
+            <div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown">
+                <li> <span style="padding:10px;">{{this.loginS.user!.name}}</span></li>
+                <li> <span style="padding:10px;">{{this.loginS.user!.email}}</span></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a>
+            </div>
+        </li>
     </ul>
 </nav>
